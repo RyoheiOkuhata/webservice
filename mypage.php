@@ -14,17 +14,11 @@ require('auth.php');
 
 //user情報取得
 $u_id = $_SESSION['user_id'];
-<<<<<<< HEAD
 
-
-reset();
 
 getProduct($u_id,$p_id);
 
 //カテゴリー情報を取得
-=======
-// DBからカテゴリー情報を取得
->>>>>>> 624f995f2b9464af1af83f01a9b83482b10786c7
 $dbCategoryData = getCategory();
 
 
