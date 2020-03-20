@@ -1,0 +1,438 @@
+body{
+  margin: 0px;
+}
+/* -----------------------------
+header
+ -------------------------------*/
+header a{
+  list-style: none;
+  text-decoration: none;
+  color: 	white;
+}
+header{
+height: 80px;
+margin-bottom: 50px;
+background: 	#444;
+}
+header h1{
+font-size: 30px;
+font-family: 'Montserrat', sans-serif;
+text-align: center;
+float: left;
+height: 50px;
+width: 30%;
+color: 	white;
+border-radius: 100px;
+line-height: 50px;
+}
+ul li{
+  float: left;
+  }
+  li{
+  list-style: none;
+  }
+  ul{
+    font-size: 20px; 
+  }
+ .top-nav a{
+  text-decoration: none;
+  padding:27px 10px 27px 10px;
+  color: 	#f0f8ff;
+  margin: 10px;
+  line-height: 40px;
+  font-family: 'Montserrat', sans-serif;
+  transition: all 0.3s;
+  }
+  .top-nav {
+    float: right;
+    position: absolute;
+    top: 0px;
+    right: 40px;;
+    }
+  .top-nav li a:hover {
+      opacity: 0.1;
+      background-color: transparent;
+    }
+    header h1:hover {
+      opacity: 0.1;
+      background-color: transparent;
+    }
+/* -----------------------------
+header
+ -------------------------------*/
+.page-title{
+  text-align: center;
+  font-size: 30px;
+}
+.container{
+  overflow: hidden;
+}
+.main-mypage{
+  float: left;
+  width: 70%;
+}
+/* -----------------------------
+sidebar
+ -------------------------------*/
+.sidebar{
+  float: left;
+  width: 20%;
+  height: 100%;
+  text-align: center;
+  color:	white;
+  box-sizing: border-box;
+  margin: 10px;
+  padding: 15px;
+  min-height: 600px;
+  background: #444;
+}
+.sidebar a{
+  display:block;
+  text-decoration: none;
+  font-size: 20px;
+  color:	white;
+  padding: 10px;
+  }
+.search-rlt{
+  overflow: hidden;
+  padding: 20px;
+}
+.search-left {
+  float: left;
+}
+.search-right{
+  float: right;
+}
+.sidebar-btn{
+  width: 100%;
+  padding: 10px;
+}
+.sidebar-submit{
+  background-color: white;
+  border: none;
+  padding: 15px 30px 15px 30px;
+  color: #444;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 50px;
+  width: 100%;
+}
+/* -----------------------------
+postの塊
+ -------------------------------*/
+.post-flex{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+.post-item{
+width: 30%;
+padding: 10px;
+margin: 10px;
+box-sizing: border-box;
+}
+img{
+ width:100%;
+}
+.prev-img-post {
+  position: relative;
+  max-height: 150px;
+  top: -150px;
+}
+
+
+/*========================================
+ページネイション
+========================================*/
+
+
+.pagination {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.pagination-list {
+  position: relative;
+  left: 50%;
+  float: left;
+  padding-left: 0;
+  list-style: none;
+}
+
+.pagination .list-item {
+  position: relative;
+  left: -100%;
+  float: left;
+  margin-right: 5px;
+}
+
+.pagination .list-item:last-child {
+  margin-right: 0;
+}
+
+.pagination .list-item a {
+  display: block;
+  padding: 5px 10px;
+  background:  #444;
+  color: #eee;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.pagination .list-item.active a {
+   background:  #444;
+  color: white;
+
+}
+
+.pagination .list-item a:hover {
+  background:  silver;
+  color: white;
+  border: #444;
+}
+
+
+
+/*=============================
+form
+==============================*/
+.post-form{
+  width: 70%;
+  border: #4444 4px solid;
+  padding: 20px;
+  margin: auto;
+}
+.container-form{
+margin: auto;
+}
+.drop{
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.imgDrop-container{
+  height: 150px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.area-drop{
+  height: 150px;
+  background-color: #4444;
+  margin-bottom: 10px;
+  margin: auto;
+  width: 40%;
+  display: block;
+}
+.input-file{
+  height: 150px;
+  background-color: #4444;
+  width: 100%;
+  opacity: 0;
+  z-index: 2;
+}
+ .prev-img{
+   
+ }
+
+
+/*========================================
+詳細
+========================================*/
+.container-detail{
+  margin: auto;
+  width: 980px;
+}
+
+.main-detail{
+  width: 60%;
+  float: left;
+  padding: 10px;
+  box-sizing: border-box;
+  min-height: 600px;
+}
+.main-detail img{
+  min-height: 400px;
+}
+.sub-detail{
+  width: 30%;
+  float: right;
+  padding: 20px;
+  box-sizing: border-box;
+  min-height: 150px;
+}
+  .detail {
+    display: flex;
+    display: flex;
+    align-items: center;
+    justify-content :space-between;
+    align-items: center;
+    padding: 20px;
+  }
+  .detail-phrase{
+    font-size: 40px;
+  }
+.detail-post-sentence{
+  font-size: 30px;
+  background-color: #4444;
+  color: white;
+  width: 100%;
+}
+.detail-post-sentence-wrap{
+  padding: 20px;
+
+}
+
+.form-signup{
+border: #4444 solid 4px;
+padding: 20px;
+width: 50%;
+margin: auto;
+}
+.container-form{
+  margin: auto;
+  width: 980px;
+  padding: 40px;
+  text-align: center;
+}
+
+.post-text-signup{
+  width: 70%;
+  padding: 40px;
+}
+
+input[type="text"]{
+  height: 50px;;
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 5px solid #4444;
+  font-size: 20px;
+  }
+  input[type="password"]{
+    height: 50px;;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 5px solid #4444;
+    font-size: 20px;
+    }
+    input[type="submit"]{
+      border: #4444 solid 1px;
+      padding: 15px 30px 15px 30px;
+      cursor: pointer;
+      text-align: center;
+      margin-top: 30px;
+      width: 70%;
+      box-sizing: border-box;
+      }
+      input[type="submit"]a:hover {
+        opacity: 0.1;
+        background-color: transparent;
+      }
+
+
+      .footer{
+        min-height: 100px;
+        background-color: #4444;
+        width: 100%;
+      }
+/*========================================
+お気に入り
+========================================*/
+.fa{
+  font-size: 30px !important;
+  display: block;
+}
+.fa-heart-o{
+  color: #a8a8a8;
+}
+.fa-heart{
+  color: #e7a0c5;
+}
+.fav{
+  cursor: pointer;
+  transition: all .20s;
+  position: absolute;/* 重なり*/
+  z-index: 2;
+  background: #fff;
+}
+.fav.is-active{
+  animation: favPushAnimation 0.2s ease-out;
+}
+.fav2{
+  z-index: 1;
+  position: absolute;/* 重なり*/
+}
+.fav2.is-active{
+  animation: favMoveAnimation 1s ease-out;
+}
+/* 独自のアニメーション関数を作れる*/
+/* 一旦縮小して、元に戻す*/
+@keyframes favPushAnimation{
+  0%{/* 最初*/
+    transform: scale(0.7);
+  }
+  100%{/*最後*/
+    transform: scale(1);
+  }
+}
+/*このアニメーションを0,2秒かけて行う*/
+
+/*上に移動、左右に揺れる、消える*/
+@keyframes favMoveAnimation{
+  0%{
+    z-index: 3;
+    transform: translateY(0) translateX(-3px);
+    /*左*/
+  }
+  10%{ transform: translateY(-5px) translateX(3px); }
+   /*上、右*/
+  20%{ transform: translateY(-10px); }
+     /*上*/
+  30%{ transform: translateY(-15px); }
+    /*上*/
+  40%{ transform: translateY(-20px) translateX(-3px); }
+  50%{ transform: translateY(-25px); }
+  60%{ transform: translateY(-30px); }
+  70%{ transform: translateY(-35px) translateX(3px); }
+  80%{ transform: translateY(-40px); }
+  90%{ transform: translateY(-45px); }
+  100%{
+    transform: translateY(-50px) translateX(-3px);
+    opacity: 0;
+  }
+}
+
+/*========================================
+エラー
+========================================*/
+.err{
+  color: red;
+}
+
+
+/*========================================
+select
+========================================*/
+
+label {
+  display: block;
+  text-align: center;
+}
+.sidebar-selectbox select{
+  width: 100%;
+  padding: 10px;
+  font-size: 20px;
+  border: 3px solid #4444;
+    box-sizing: border-box;
+  
+}
+.post-selectbox select {
+    border: 5px solid #4444;
+    font-size: 20px;
+    width: 70%;
+    padding: 10px;
+}
+
+.back_to_mypage {
+  color: #4444;
+
+}
