@@ -45,9 +45,15 @@ function debugLogStart(){
 //================================
 function dbConnect(){
   //DBへの接続準備(プロパティ)
+<<<<<<< HEAD
   $dsn = 'mysql:dbname=webservice;host=localhost;charset=utf8';
   $user = 'root';
   $password = 'root';
+=======
+  $dsn = 'mysql:dbname=okuhata_webservice;host=mysql10016.xserver.jp;charset=utf8';
+  $user = 'okuhata_english';
+  $password = '2bhk1118';
+>>>>>>> 624f995f2b9464af1af83f01a9b83482b10786c7
   $options = array(
     // SQL実行失敗時にはエラーコードのみ設定
     PDO::ATTR_ERRMODE => PDO::ERRMODE_SILENT,
