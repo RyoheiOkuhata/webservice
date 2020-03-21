@@ -646,3 +646,6 @@ function appendGetParam($arr_del_key = array()){
     return $str;
   }
 }
+
+
+//フラッシュカード
