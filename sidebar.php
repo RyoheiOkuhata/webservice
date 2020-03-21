@@ -16,7 +16,7 @@
           </div>
         <input type="submit" value="検索" class="sidebar-submit btn">
         </form>
-        <a href="my_product.php">自分の投稿たち</a>
+        <a href="my_product.php">自分の投稿たち一覧</a>
         <a href="fav.php">お気に入り</a>
         <a href="post.php">新しいphraseを登録</a>
         <a href="prof.php">プロフィール編集</a>
