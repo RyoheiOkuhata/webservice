@@ -11,7 +11,7 @@ require('auth.php');
 
 $p_id = (!empty($_GET['p_id'])) ? $_GET['p_id'] : '';
 $u_id = $_SESSION['user_id'];
-$productData= getProduct($u_id,$p_id);
+$productData= getProductHome($p_id);
 debug('phraseデータ：'.print_r($productData,true));
 
 

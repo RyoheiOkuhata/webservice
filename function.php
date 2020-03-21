@@ -45,15 +45,9 @@ function debugLogStart(){
 //================================
 function dbConnect(){
   //DBへの接続準備(プロパティ)
-<<<<<<< HEAD
   $dsn = 'mysql:dbname=webservice;host=localhost;charset=utf8';
   $user = 'root';
   $password = 'root';
-=======
-  $dsn = 'mysql:dbname=okuhata_webservice;host=mysql10016.xserver.jp;charset=utf8';
-  $user = 'okuhata_english';
-  $password = '2bhk1118';
->>>>>>> 624f995f2b9464af1af83f01a9b83482b10786c7
   $options = array(
     // SQL実行失敗時にはエラーコードのみ設定
     PDO::ATTR_ERRMODE => PDO::ERRMODE_SILENT,
@@ -190,6 +184,11 @@ function validHalf($str, $key){
   }
 }
 
+
+
+//================================
+// ユーザ情報
+//================================
 function getUser($u_id){
   debug('ユーザー情報を取得します。');
   //例外処理
@@ -213,6 +212,10 @@ function getUser($u_id){
   }
 }
 
+
+//================================
+// そのユーザーのその商品
+//================================
 function getProduct($u_id, $p_id){
   debug('phrase情報を取得します。');
   debug('ユーザーID：'.$u_id);
@@ -239,6 +242,38 @@ function getProduct($u_id, $p_id){
   }
 }
 
+
+//================================
+// 特定の商品
+//================================
+function getProductHome($p_id){
+  debug('phrase情報を取得します。');
+  //例外処理
+  try {
+    // DBへ接続
+    $dbh = dbConnect();
+    // SQL文作成
+    $sql = 'SELECT * FROM phrase_register WHERE id = :p_id AND delete_flg = 0';
+    $data = array(':p_id' => $p_id);
+    // クエリ実行
+    $stmt = queryPost($dbh, $sql, $data);
+
+    if($stmt){
+      // クエリ結果のデータを１レコード返却
+      return $stmt->fetch(PDO::FETCH_ASSOC);
+    }else{
+      return false;
+    }
+
+  } catch (Exception $e) {
+    error_log('エラー発生:' . $e->getMessage());
+  }
+}
+
+
+//================================
+// そのユーザーの商品
+//================================
 function getMyProducts($u_id){
   debug('自分の商品情報を取得します。');
   debug('ユーザーID：'.$u_id);
@@ -264,7 +299,9 @@ function getMyProducts($u_id){
   }
 }
 
-
+//================================
+// カテゴリー
+//================================
 
 function getCategory(){
   debug('カテゴリー情報を取得します。');
@@ -289,22 +326,10 @@ function getCategory(){
 }
 
 
-function appendGetParam($arr_del_key = array()){
-  if(!empty($_GET)){
-    debug('戻るが送信されました');
-    $str = '?';
-    foreach($_GET as $key => $val){
-      if(!in_array($key,$arr_del_key,true)){ //取り除きたいパラメータじゃない場合にurlにくっつけるパラメータを生成
-        $str .= $key.'='.$val.'&';
-      }
-    }
-    $str = mb_substr($str, 0, -1, "UTF-8");
-    return $str;
-    debug($str);
-  }
-}
 
-
+//================================
+// ユーザ情報
+//================================
 function getMyLike($u_id){
   debug('自分のお気に入り情報を取得します。');
   debug('ユーザーID：'.$u_id);
@@ -328,7 +353,9 @@ function getMyLike($u_id){
     error_log('エラー発生:' . $e->getMessage());
   }
 }
-
+//================================
+// ユーザ情報
+//================================
 function isLike($u_id, $p_id){
   debug('お気に入り情報があるか確認します。');
   debug('ユーザーID：'.$u_id);
@@ -381,7 +408,9 @@ function isLogin(){
     return false;
   }
 }
-
+//================================
+// ユーザ情報
+//================================
 function uploadImg($file, $key){
   debug('画像アップロード処理開始');
   debug('FILE情報：'.print_r($file,true));
@@ -487,7 +516,7 @@ function getFormData($str, $flg = false){
 /*========================================
 検索、ページネーション、件数
 ========================================*/
-function getPostList($currentMinNum = 1,$category,$seach, $span = 9){
+function getPostList($currentMinNum = 1,$category,$seach, $u_id ,$span = 9){
   debug('POST情報を取得します。');
   //例外処理
   try {
@@ -500,7 +529,12 @@ function getPostList($currentMinNum = 1,$category,$seach, $span = 9){
     //カテゴリーで検索したときの件数の表示
     if(!empty($category)) $sql .= ' WHERE category_id = '.$category;
     //キーワード検索したときの件数の表示
-    if(!empty($seach)) $sql .= "  WHERE phrase LIKE '%" . $seach . "%'";
+    if(!empty($seach)) $sql .= " WHERE phrase LIKE '%" . $seach . "%'";
+
+    
+
+
+   
 
 
     $data = array();
@@ -546,3 +580,69 @@ phrase_register表示用のSQL文作成
 
 
 
+
+ //================================
+// ユーザ情報
+//================================
+// $currentPageNum : 現在のページ数
+// $totalPageNum : 総ページ数
+// $link : 検索用GETパラメータリンク
+// $pageColNum : ページネーション表示数
+function pagination( $currentPageNum, $totalPageNum, $link = '', $pageColNum = 5){
+  // 現在のページが、総ページ数と同じ　かつ　総ページ数が表示項目数以上なら、左にリンク４個出す
+  if( $currentPageNum == $totalPageNum && $totalPageNum > $pageColNum){
+    $minPageNum = $currentPageNum - 4;
+    $maxPageNum = $currentPageNum;
+  // 現在のページが、総ページ数の１ページ前なら、左にリンク３個、右に１個出す
+  }elseif( $currentPageNum == ($totalPageNum-1) && $totalPageNum > $pageColNum){
+    $minPageNum = $currentPageNum - 3;
+    $maxPageNum = $currentPageNum + 1;
+  // 現ページが2の場合は左にリンク１個、右にリンク３個だす。
+  }elseif( $currentPageNum == 2 && $totalPageNum > $pageColNum){
+    $minPageNum = $currentPageNum - 1;
+    $maxPageNum = $currentPageNum + 3;
+  // 現ページが1の場合は左に何も出さない。右に５個出す。
+  }elseif( $currentPageNum == 1 && $totalPageNum > $pageColNum){
+    $minPageNum = $currentPageNum;
+    $maxPageNum = 5;
+  // 総ページ数が表示項目数より少ない場合は、総ページ数をループのMax、ループのMinを１に設定
+  }elseif($totalPageNum < $pageColNum){
+    $minPageNum = 1;
+    $maxPageNum = $totalPageNum;
+  // それ以外は左に２個出す。
+  }else{
+    $minPageNum = $currentPageNum - 2;
+    $maxPageNum = $currentPageNum + 2;
+  }
+  
+  echo '<div class="pagination">';
+    echo '<ul class="pagination-list">';
+      if($currentPageNum != 1){
+        echo '<li class="list-item"><a href="?p=1'.$link.'">&lt;</a></li>';
+      }
+      for($i = $minPageNum; $i <= $maxPageNum; $i++){
+        echo '<li class="list-item ';
+        if($currentPageNum == $i ){ echo 'active'; }
+        echo '"><a href="?p='.$i.$link.'">'.$i.'</a></li>';
+      }
+      if($currentPageNum != $maxPageNum && $maxPageNum > 1){
+        echo '<li class="list-item"><a href="?p='.$maxPageNum.$link.'">&gt;</a></li>';
+      }
+    echo '</ul>';
+  echo '</div>';
+}
+
+//GETパラメータ付与
+// $del_key : 付与から取り除きたいGETパラメータのキー
+function appendGetParam($arr_del_key = array()){
+  if(!empty($_GET)){
+    $str = '?';
+    foreach($_GET as $key => $val){
+      if(!in_array($key,$arr_del_key,true)){ //取り除きたいパラメータじゃない場合にurlにくっつけるパラメータを生成
+        $str .= $key.'='.$val.'&';
+      }
+    }
+    $str = mb_substr($str, 0, -1, "UTF-8");
+    return $str;
+  }
+}
