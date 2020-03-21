@@ -39,9 +39,9 @@ debug('phraseデータ：'.print_r($productData,true));
 
 
 
-    <i class="fa fa-heart-o js-click-animation fav js-click-like<?php if(isLike($_SESSION['user_id'],$p_id )){ echo 'fa-heart-o '; }?>" aria-hidden="true "data-productid="<?php echo  $productData['id']; ?>"></i>
+    <i class="fa fa-heart-o js-click-animation fav js-click-like<?php if(isLike($_SESSION['user_id'],$p_id )){ echo 'fa-heart-o'; }?>" aria-hidden="true "data-productid="<?php echo  $productData['id']; ?>"></i>
 
-    <i class="fa fa-heart js-click-animation2 fav2 js-click-like<?php if(isLike($_SESSION['user_id'], $productData['id'])){ echo 'fa-heart '; }?>" aria-hidden="true" data-productid="<?php echo(sanitize($productData['id'])); ?>"></i>
+    <i class="fa fa-heart js-click-animation2 fav2 " aria-hidden="true"></i>
 
 
   </div>

@@ -32,13 +32,13 @@ if(isset($_POST['productId']) && isset($_SESSION['user_id']) && isLogin()){
     // レコードが１件でもある場合
     if(!empty($resultCount)){
       // レコードを削除する
-      $sql = 'DELETE FROM `fav` WHERE  phrase_register_id = :p_id AND user_id = :u_id';
+      $sql = 'DELETE FROM `fav` WHERE   user_id =:u_id AND  phrase_register_id = :p_id';
       $data = array(':u_id' => $_SESSION['user_id'], ':p_id' => $p_id);
       // クエリ実行
       $stmt = queryPost($dbh, $sql, $data);
     }else{
       // レコードを挿入する
-      $sql = 'INSERT INTO `fav` ( phrase_register_id, user_id, create_date) VALUES (:p_id, :u_id, :date)';
+      $sql = 'INSERT INTO `fav` ( user_id,  phrase_register_id , create_date) VALUES (:u_id, :p_id, :date)';
       $data = array(':u_id' => $_SESSION['user_id'], ':p_id' => $p_id, ':date' => date('Y-m-d H:i:s'));
       // クエリ実行
       $stmt = queryPost($dbh, $sql, $data);
