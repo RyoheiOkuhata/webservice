@@ -17,6 +17,7 @@ $u_id = $_SESSION['user_id'];
 // DBからカテゴリー情報を取得
 $dbCategoryData = getCategory();
 $dbPostData = getMyProducts($u_id);
+//
 
 ?>
 
